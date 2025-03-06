@@ -3,7 +3,6 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.filters import CommandStart, Command
 from aiogram.enums import ParseMode
 import Keyboards  as kb
-
 router = Router()
 
 
@@ -49,6 +48,17 @@ async def pydev(callback: CallbackQuery):
 
 
 @router.callback_query(F.data == "Variable")
+async def pydev(callback: CallbackQuery):
+    await callback.answer("")
+    await callback.message.answer(' Переменная = именованная ячейка памяти, в которой хранятся данные \n'
+                                   ' Пример: \n'
+                                   ' ```python a = 5 # переменная a = 5\n'
+                                   '  b = "juice" # переменная b = 7\n'
+                                    'print(a)  # Вывод: 5 (a)\n'
+                                    "print(b)  # Вывод: juice (b)```\n", parse_mode = ParseMode.MARKDOWN)
+
+
+@router.callback_query(F.data == "Function")
 async def pydev(callback: CallbackQuery):
     await callback.answer("")
     await callback.message.answer(' Переменная = именованная ячейка памяти, в которой хранятся данные \n'
